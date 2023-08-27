@@ -11,14 +11,19 @@ const path = require('path');
 /////////////////////////////////////////////
 // Database Connection
 /////////////////////////////////////////////
-// establish connection:
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnitedTopology: true
 });
 
-// events for when connection opens/disconnects/errors
 mongoose.connection
     .on('open', () => console.log('Connected to Mongoose'))
     .on('close', () => console.log('Disconnected from Mongoose'))
     .on('error', error => console.error(error));
+
+////////////////////////////////////////////////////////////////
+// Create our Express Application Object
+///////////////////////////////////////////////////////////////
+const app = express();
+app.engine('jsx', require('express-react-views').createEngine());
+app.set('view engine', 'jsx');
