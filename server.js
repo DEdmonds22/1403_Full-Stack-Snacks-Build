@@ -42,3 +42,9 @@ app.use(express.static("public"));
 app.get('/', (req, res) => {
     res.send("Your server is running... better catch it.");
 });
+
+/////////////////////////////////////////////
+// Server Listener
+/////////////////////////////////////////////
+const PORT = process.env.PORT || 8000;
+app.listen(PORT, () => console.log(`Now listening on port ${PORT}`));
