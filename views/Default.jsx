@@ -40,7 +40,7 @@ const Default = (props) => {
             </head>
             <body>
                 <header>
-                <h1>The Snack App</h1>
+                    <h1>The Snack App</h1>
                 </header>
 
                 <main>

@@ -2,16 +2,14 @@ const React = require('react');
 const DefaultLayout = require('../Default')
 
 const Index = ({snacks}) => {
-    render (
+    return (
         <DefaultLayout>
             <div>
-                {
-                snacks.map((snack) => (
+                <a href='/snacks/new'><button>Create a New Snack</button></a>
+                {snacks.map((snack) => (
                     <article>
                         <a href={`/snacks/${snack._id }`}>
-                            <h2>
-                            {snack.name} cost {snack.cost} and is {snack.calories} Calories!
-                            </h2>
+                            <h2>{snack.name} cost {snack.cost} and is {snack.calories} Calories!</h2>
                         </a>
                     </article>
                 ))
