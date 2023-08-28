@@ -67,7 +67,7 @@ router.get("/:id", (req, res) => {
         })
         .catch(error => res.status(400).json({ error }));
 });
-
+/*
 /////////////////////////////////////////////
 // Seed Route
 /////////////////////////////////////////////
@@ -95,5 +95,6 @@ router.get('/seed', (req, res) => {
             res.status(400).json(error);
         });
 });
+*/
 
 module.exports = router;
