@@ -7,6 +7,8 @@ const morgan = require('morgan');
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const path = require('path');
+const Snack = require('./models/Snack');
+const { error } = require('console');
 
 /////////////////////////////////////////////
 // Database Connection
@@ -41,6 +43,34 @@ app.use(express.static("public"));
 /////////////////////////////////////////////
 app.get('/', (req, res) => {
     res.send("Your server is running... better catch it.");
+});
+
+/////////////////////////////////////////////
+// Seed Route
+/////////////////////////////////////////////
+app.get('/snacks/seed', (req, res) => {
+    // array of starter snacks
+    const starterSnacks = [
+        {name: "Chips", cost: 3.99, calories: 200},
+        {name: "Cookies", cost: 4.99, calories: 1000},
+        {name: "Chocolate", cost: 3.99, calories: 400},
+        {name: "Nuts", cost: 2.99, calories: 500}
+    ];
+
+    // delete all snacks
+    Snack.deleteMany({})
+    .then(date => {
+        Snack.create(starterSnacks)
+            .then(data => {
+                res.status(200).json(date)
+            })
+            .catch(error => {
+                res.status(400).json(error)
+            });
+    })
+    .catch(error => {
+        res.status(400).json(error);
+    });
 });
 
 /////////////////////////////////////////////
