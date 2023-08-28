@@ -15,7 +15,7 @@ const { error } = require('console');
 /////////////////////////////////////////////
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
-    useUnitedTopology: true
+    useUnifiedTopology: true
 });
 
 mongoose.connection
@@ -62,7 +62,7 @@ app.get('/snacks/seed', (req, res) => {
     .then(date => {
         Snack.create(starterSnacks)
             .then(data => {
-                res.status(200).json(date)
+                res.status(200).json(data)
             })
             .catch(error => {
                 res.status(400).json(error)

@@ -2,7 +2,7 @@
 // Our Models
 /////////////////////////////////////////////
 // pull schema and model from mongoose using object destructuring
-const { Schema, model } = mongoose;
+const { Schema, model } = require('mongoose');
 
 // make snack schema
 const snackSchema = new Schema({
