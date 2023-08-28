@@ -31,7 +31,14 @@ app.set('view engine', 'jsx');
 /////////////////////////////////////////////
 // Middleware
 /////////////////////////////////////////////
-app.use(morgan('tiny')); // logging
-app.use(methodOverride('_method')); // override for put and delete requests from forms
-app.use(express.urlencoded({ extended: true }));    // parse urlencoded request bodies (ie. req.body)
-app.use(express.static("public"));  // serve files public statically
+app.use(morgan('tiny'));
+app.use(methodOverride('_method'));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
+
+/////////////////////////////////////////////
+// Routes
+/////////////////////////////////////////////
+app.get('/', (req, res) => {
+    res.send("Your server is running... better catch it.");
+});
